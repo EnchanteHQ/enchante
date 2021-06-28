@@ -5,4 +5,5 @@ import com.benrostudios.enchante.data.network.reponse.GenericResponse
 
 interface AuthRepo {
     suspend fun login(token: String): LiveData<GenericResponse>
+    val authResponse: LiveData<GenericResponse>
 }

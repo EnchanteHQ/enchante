@@ -9,7 +9,7 @@ import android.view.Window
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.benrostudios.enchante.ui.AuthActivity
+import com.benrostudios.enchante.ui.auth.AuthActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {

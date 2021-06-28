@@ -11,7 +11,8 @@ import kotlinx.coroutines.withContext
 
 class AuthRepoImpl(private val authService: AuthService) : AuthRepo, BaseNetworkRepository() {
 
-    val _authResponse = MutableLiveData<GenericResponse>()
+    private val _authResponse = MutableLiveData<GenericResponse>()
+
 
     override suspend fun login(token: String): LiveData<GenericResponse> {
         return withContext(Dispatchers.IO) {
@@ -24,4 +25,7 @@ class AuthRepoImpl(private val authService: AuthService) : AuthRepo, BaseNetwork
             return@withContext _authResponse
         }
     }
+
+    override val authResponse: LiveData<GenericResponse>
+        get() = _authResponse
 }
