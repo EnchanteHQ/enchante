@@ -12,4 +12,28 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+
+    <color name="dark">#0D0E12</color>
+
+    <color name="grey_black">#1C1C1C</color>
+    <color name="grey_dark">#373737</color>
+    <color name="grey_medium">#737373</color>
+
+    <color name="primary_orange">#FF6905</color>
+    <color name="secondary_orange1">#FF7E27</color>
+    <color name="secondary_orange2">#FF9752</color>
+    <color name="secondary_orange3">#FFB889</color>
+
+    <color name="primary_green">#0ED475</color>
+    <color name="secondary_green1">#06C270</color>
+    <color name="secondary_green2">#39D98A</color>
+    <color name="secondary_green3">#57EBA1</color>
+
+    <color name="primary_red">#EE2B31</color>
+    <color name="secondary_red1">#F63E43</color>
+    <color name="secondary_red2">#FF6266</color>
+    <color name="secondary_red3">#FF8B8E</color>
+
+    <color name="text_color">#FFFFFFFF</color>
+
 </resources>
