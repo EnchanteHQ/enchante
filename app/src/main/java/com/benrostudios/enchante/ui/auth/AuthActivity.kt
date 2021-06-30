@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import com.benrostudios.enchante.MainActivity
+import com.benrostudios.enchante.ui.home.HomeActivity
 import com.benrostudios.enchante.R
 import com.benrostudios.enchante.databinding.ActivityAuthBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -72,7 +71,7 @@ class AuthActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, HomeActivity::class.java))
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     //TODO: Handle login failure
