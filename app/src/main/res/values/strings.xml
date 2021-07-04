@@ -15,6 +15,8 @@
     <string name="placeholder_event_status">Happening Now</string>
     <string name="placeholder_event_location">California, USA</string>
     <string name="placeholder_event_seats">12 seats left</string>
+    <string name="placeholder_event_date">22nd Dec 2021</string>
+    <string name="placeholder_event_pass_type">Citizen Pass</string>
     <string name="popular_events_title">Popular events near you</string>
     <string name="based_interests_title">Based on your interest</string>
     <string name="quick_tip_title">Quick Tip</string>

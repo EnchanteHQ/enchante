@@ -2,18 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="@color/grey_black"
-        android:layout_width="220dp"
-        android:layout_height="340dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/grey_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,103 +23,86 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/event_item_corners"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toTopOf="@+id/guideline2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
+                android:background="@drawable/rounded_corners"
+                android:id="@+id/event_item_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.61" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:textAllCaps="true"
-                android:id="@+id/textView"
+                android:id="@+id/event_item_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/placeholder_event_status"
+                android:layout_marginStart="16dp"
+                android:text="@string/placeholder_event_date"
                 android:textColor="@color/primary_orange"
                 android:textSize="10sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                app:layout_constraintStart_toEndOf="@+id/event_item_image"
+                app:layout_constraintTop_toTopOf="@+id/event_item_image" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/event_item_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/neue_montreal_medium"
                 android:text="@string/placeholder_event_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintStart_toStartOf="@+id/event_item_date"
+                app:layout_constraintTop_toBottomOf="@+id/event_item_date" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline3"
-                app:srcCompat="@drawable/ic_location_24" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:srcCompat="@drawable/ic_event_seat_24"
-                app:tint="@color/grey_medium" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
+            <TextView
+                android:id="@+id/event_item_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.84" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
                 android:text="@string/placeholder_event_location"
                 android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+            <ImageView
+                android:id="@+id/event_item_share"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                app:srcCompat="@drawable/ic_share_24" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/event_item_title"
+                app:layout_constraintTop_toBottomOf="@+id/event_item_title"
+                app:srcCompat="@drawable/ic_location_24" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0dp"
+                android:textScaleX="1.2"
+                android:id="@+id/event_item_pass_type"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/placeholder_event_seats"
-                android:textColor="@color/grey_medium"
+                android:fontFamily="@font/neue_montreal_bold"
+                android:text="@string/placeholder_event_pass_type"
+                android:textAllCaps="true"
+                android:textColor="@color/primary_green"
                 android:textSize="10sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="@+id/imageView4" />
+                app:layout_constraintBottom_toBottomOf="@+id/event_item_share"
+                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/event_item_share" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
