@@ -9,4 +9,15 @@
     <string name="events_fragment">Events</string>
     <string name="wallet_fragment">Wallet</string>
     <string name="profile_fragment">Profile</string>
+
+    <!-- Home Fragment -->
+    <string name="placeholder_event_name">Abu Dhabi F1 GP grand PRIX 2021</string>
+    <string name="placeholder_event_status">Happening Now</string>
+    <string name="placeholder_event_location">California, USA</string>
+    <string name="placeholder_event_seats">12 seats left</string>
+    <string name="popular_events_title">Popular events near you</string>
+    <string name="based_interests_title">Based on your interest</string>
+    <string name="quick_tip_title">Quick Tip</string>
+    <string name="placeholder_quick_tip_title">Budget management</string>
+    <string name="placeholder_quick_tip_description">AR payment lets you pay anyone with just one tap, no matter which currency</string>
 </resources>
