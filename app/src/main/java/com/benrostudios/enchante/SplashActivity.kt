@@ -31,7 +31,6 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-
                 if (FirebaseAuth.getInstance().currentUser != null) {
                     startActivity(Intent(this, HomeActivity::class.java))
                     this.finish()
@@ -39,8 +38,6 @@ class SplashActivity : AppCompatActivity() {
                     startActivity(Intent(this, AuthActivity::class.java))
                     this.finish()
                 }
-
-
             }, SPLASH_TIME_OUT
         )
     }
