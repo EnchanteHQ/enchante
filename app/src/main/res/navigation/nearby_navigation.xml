@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/nearby_navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nearby_navigation"
+    app:startDestination="@id/nearbyTransactionDetailsFragment">
 
+    <fragment
+        android:id="@+id/nearbyDiscoveryFragment"
+        android:name="com.benrostudios.enchante.ui.nearby.fragments.NearbyDiscoveryFragment"
+        android:label="fragment_nearby_discovery"
+        tools:layout="@layout/fragment_nearby_discovery" >
+        <action
+            android:id="@+id/action_nearbyDiscoveryFragment_to_nearbyTransactionDetailsFragment"
+            app:destination="@id/nearbyTransactionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nearbyTransactionDetailsFragment"
+        android:name="com.benrostudios.enchante.ui.nearby.fragments.NearbyTransactionDetailsFragment"
+        android:label="fragment_nearby_transaction_details"
+        tools:layout="@layout/fragment_nearby_transaction_details" >
+        <action
+            android:id="@+id/action_nearbyTransactionDetailsFragment_to_nearbyTransactionProgressFragment"
+            app:destination="@id/nearbyTransactionProgressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nearbyTransactionResultFragment"
+        android:name="com.benrostudios.enchante.ui.nearby.fragments.NearbyTransactionResultFragment"
+        android:label="fragment_nearby_transaction_result"
+        tools:layout="@layout/fragment_nearby_transaction_result" />
+    <fragment
+        android:id="@+id/nearbyTransactionProgressFragment"
+        android:name="com.benrostudios.enchante.ui.nearby.fragments.NearbyTransactionProgressFragment"
+        android:label="fragment_nearby_transaction_progress"
+        tools:layout="@layout/fragment_nearby_transaction_progress" >
+        <action
+            android:id="@+id/action_nearbyTransactionProgressFragment_to_nearbyTransactionResultFragment"
+            app:destination="@id/nearbyTransactionResultFragment" />
+    </fragment>
 </navigation>

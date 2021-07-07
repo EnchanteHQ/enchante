@@ -1,6 +1,6 @@
 package com.benrostudios.enchante.di.modules
 
-import com.benrostudios.enchante.ui.auth.AuthViewModel
+import com.benrostudios.enchante.ui.viewmodels.AuthViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,4 +1,4 @@
-package com.benrostudios.enchante.ui.auth
+package com.benrostudios.enchante.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

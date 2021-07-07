@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.benrostudios.enchante.databinding.FragmentWalletBinding
 import com.benrostudios.enchante.ui.ar.ArPaymentActivity
+import com.benrostudios.enchante.ui.nearby.NearbyPaymentActivity
 
 
 class WalletFragment : Fragment() {
@@ -26,8 +27,8 @@ class WalletFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.testOpenAr.setOnClickListener {
-            startActivity(Intent(context, ArPaymentActivity::class.java))
+        binding.sendFundsCard.setOnClickListener {
+            startActivity(Intent(context, NearbyPaymentActivity::class.java))
         }
     }
 

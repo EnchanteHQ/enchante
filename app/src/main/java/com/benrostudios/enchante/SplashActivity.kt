@@ -11,6 +11,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.benrostudios.enchante.ui.auth.AuthActivity
 import com.benrostudios.enchante.ui.home.HomeActivity
+import com.benrostudios.enchante.ui.onboarding.OnboardingActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
@@ -32,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 if (FirebaseAuth.getInstance().currentUser != null) {
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, OnboardingActivity::class.java))
                     this.finish()
                 } else {
                     startActivity(Intent(this, AuthActivity::class.java))

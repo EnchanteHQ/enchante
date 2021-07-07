@@ -22,4 +22,14 @@
     <string name="quick_tip_title">Quick Tip</string>
     <string name="placeholder_quick_tip_title">Budget management</string>
     <string name="placeholder_quick_tip_description">AR payment lets you pay anyone with just one tap, no matter which currency</string>
+
+    <!-- Wallet Fragment -->
+    <string name="wallet_balance_title">Wallet Balance</string>
+    <string name="wallet_balance_currency">Dollars</string>
+    <string name="wallet_balance_description">Exclusive rewards for attending events</string>
+    <string name="send_money_title">Send Money</string>
+    <string name="add_funds_title">Add Funds</string>
+    <string name="proceed_to_payment">Proceed to payment</string>
+    <string name="enter_amount_text">Enter Amount</string>
+    <string name="back_to_wallet">Back to Wallet</string>
 </resources>

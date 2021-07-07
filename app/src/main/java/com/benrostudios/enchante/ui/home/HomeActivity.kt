@@ -7,14 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.benrostudios.enchante.R
-import com.benrostudios.enchante.SplashActivity
-import com.benrostudios.enchante.databinding.ActivityAuthBinding
 import com.benrostudios.enchante.databinding.ActivityMainBinding
 import com.benrostudios.enchante.ui.auth.AuthActivity
-import com.benrostudios.enchante.ui.auth.AuthViewModel
+import com.benrostudios.enchante.ui.viewmodels.AuthViewModel
 import com.benrostudios.enchante.utils.SharedPrefManager
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
@@ -32,9 +29,9 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        tokenObtain()
         navController = findNavController(R.id.nav_host_fragment_home_activity)
         binding.bottomNavigationViewHomeActivity.setupWithNavController(navController)
+        d(TAG, "token from sharedPref: " + sharedPrefManager.jwtStored)
         if (sharedPrefManager.jwtStored.isEmpty()) {
             tokenObtain()
         }
@@ -53,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 } else {
                     d(TAG, "some error occured")
+                    FirebaseAuth.getInstance().signOut()
                     sharedPrefManager.nukeSharedPrefs()
                     startActivity(Intent(this, AuthActivity::class.java))
                 }
