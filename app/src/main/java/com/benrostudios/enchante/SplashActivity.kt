@@ -33,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 if (FirebaseAuth.getInstance().currentUser != null) {
-                    startActivity(Intent(this, OnboardingActivity::class.java))
+                    startActivity(Intent(this, HomeActivity::class.java))
                     this.finish()
                 } else {
                     startActivity(Intent(this, AuthActivity::class.java))

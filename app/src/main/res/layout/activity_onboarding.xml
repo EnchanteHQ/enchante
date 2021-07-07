@@ -11,7 +11,7 @@
         android:id="@+id/tabLayoutIndicator"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="tru e"
+        android:layout_alignParentBottom="true"
         android:background="#040405"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

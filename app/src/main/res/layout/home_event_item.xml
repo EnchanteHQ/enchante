@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/home_event_item_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/event_item_corners"

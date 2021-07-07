@@ -55,6 +55,12 @@ class OnboardingFragment : Fragment() {
             "3" -> R.drawable.ob3
             else -> R.drawable.ob4
         }
+        when (image) {
+            "1" -> binding.onboardingHeading.setTextColor(requireContext().getColor(R.color.light_blue_A200))
+            "2" -> binding.onboardingHeading.setTextColor(requireContext().getColor(R.color.primary_orange))
+            "3" -> binding.onboardingHeading.setTextColor(requireContext().getColor(R.color.primary_green))
+            else -> binding.onboardingHeading.setTextColor(requireContext().getColor(R.color.primary_red))
+        }
         Glide.with(this).load(renderDrawable).into(binding.onboardingImage)
 
         if (final) {
