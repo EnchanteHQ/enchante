@@ -30,4 +30,9 @@ class WalletFragment : Fragment() {
             startActivity(Intent(context, ArPaymentActivity::class.java))
         }
     }
+
+
+    companion object {
+        const val TAG = "wallet_fragment"
+    }
 }

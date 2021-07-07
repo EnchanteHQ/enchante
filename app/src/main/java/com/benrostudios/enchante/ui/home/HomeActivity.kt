@@ -1,5 +1,6 @@
 package com.benrostudios.enchante.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log.d
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +10,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.benrostudios.enchante.R
+import com.benrostudios.enchante.SplashActivity
 import com.benrostudios.enchante.databinding.ActivityAuthBinding
 import com.benrostudios.enchante.databinding.ActivityMainBinding
+import com.benrostudios.enchante.ui.auth.AuthActivity
 import com.benrostudios.enchante.ui.auth.AuthViewModel
+import com.benrostudios.enchante.utils.SharedPrefManager
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -20,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private val authViewModel: AuthViewModel by viewModel()
     private lateinit var binding: ActivityMainBinding
+    private val sharedPrefManager: SharedPrefManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +35,9 @@ class HomeActivity : AppCompatActivity() {
         tokenObtain()
         navController = findNavController(R.id.nav_host_fragment_home_activity)
         binding.bottomNavigationViewHomeActivity.setupWithNavController(navController)
+        if (sharedPrefManager.jwtStored.isEmpty()) {
+            tokenObtain()
+        }
     }
 
     private fun tokenObtain() {
@@ -44,6 +53,8 @@ class HomeActivity : AppCompatActivity() {
                     }
                 } else {
                     d(TAG, "some error occured")
+                    sharedPrefManager.nukeSharedPrefs()
+                    startActivity(Intent(this, AuthActivity::class.java))
                 }
             }
 
@@ -54,6 +65,7 @@ class HomeActivity : AppCompatActivity() {
         authViewModel.response.observe(this, Observer {
             if (it.data.jwtToken != null) {
                 d(TAG, "${it.data.jwtToken}")
+                sharedPrefManager.jwtStored = it.data.jwtToken
             }
         })
     }
