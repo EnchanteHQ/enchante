@@ -19,6 +19,8 @@ interface AuthService {
     suspend fun authenticateUser(@Body authRequest: AuthRequest): Response<GenericResponse>
 
 
+
+
     companion object {
         operator fun invoke(
             context: Context,

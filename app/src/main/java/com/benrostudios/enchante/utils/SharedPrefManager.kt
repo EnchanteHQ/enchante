@@ -23,6 +23,12 @@ class SharedPrefManager(val context: Context) {
             getPrefs()?.edit()?.putString(PREFS_PFP_URL, value)?.apply()
         }
 
+    var userPhoneNumber: String
+        get() = getPrefs()?.getString(PREFS_USER_PHONE, "") ?: ""
+        set(value) {
+            getPrefs()?.edit()?.putString(PREFS_USER_PHONE, value)?.apply()
+        }
+
     fun nukeSharedPrefs() {
         getPrefs()?.edit()?.clear()?.apply()
     }
@@ -31,6 +37,7 @@ class SharedPrefManager(val context: Context) {
         const val PREFS_FILENAME = "com.benrostudios.enchante.prefs"
         const val PREFS_USERNAME = "username"
         const val PREFS_PFP_URL = "profileUrl"
+        const val PREFS_USER_PHONE = "userPhone"
         const val PREFS_JWT = "jwt"
     }
 }

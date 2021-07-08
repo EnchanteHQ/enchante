@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/authOTPFragment">
+
+    <fragment
+        android:id="@+id/googleAuth"
+        android:name="com.benrostudios.enchante.ui.auth.GoogleAuth"
+        android:label="fragment_google_auth"
+        tools:layout="@layout/fragment_google_auth" />
+    <fragment
+        android:id="@+id/authOTPFragment"
+        android:name="com.benrostudios.enchante.ui.auth.AuthOTPFragment"
+        android:label="fragment_auth_o_t_p"
+        tools:layout="@layout/fragment_auth_o_t_p" >
+        <action
+            android:id="@+id/action_authOTPFragment_to_googleAuth"
+            app:destination="@id/googleAuth" />
+    </fragment>
+</navigation>

@@ -55,7 +55,6 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this, AuthActivity::class.java))
                 }
             }
-
     }
 
     private fun callJwtToken(token: String) {

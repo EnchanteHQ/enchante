@@ -1,6 +1,8 @@
 package com.benrostudios.enchante.data.network
 
 import android.content.Context
+import com.benrostudios.enchante.data.models.requests.AuthRequest
+import com.benrostudios.enchante.data.models.requests.RegistrationRequest
 import com.benrostudios.enchante.data.network.reponse.GenericResponse
 import com.benrostudios.enchante.utils.Constants
 import com.benrostudios.enchante.utils.SharedPrefManager
@@ -10,14 +12,21 @@ import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
 
     @GET("/v1/user/home")
-    suspend fun homeRoute(@Query("lat") latitude: Double,
-                          @Query("lon") longitude: Double): Response<GenericResponse>
+    suspend fun homeRoute(
+        @Query("lat") latitude: Double,
+        @Query("lon") longitude: Double
+    ): Response<GenericResponse>
+
+    @POST("/v1/user/profile/registration")
+    suspend fun register(@Body registrationRequest: RegistrationRequest): Response<GenericResponse>
 
 
     companion object {

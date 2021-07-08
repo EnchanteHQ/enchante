@@ -14,5 +14,5 @@ val repositoryModule = module {
     single { SharedPrefManager(get()) }
     single<AuthRepo> { AuthRepoImpl(get()) }
     single<ApiRepo> { ApiRepoImpl(get()) }
-    single<WalletRepo> { WalletRepoImpl(get()) }
+    single<WalletRepo> { WalletRepoImpl(get(), get()) }
 }

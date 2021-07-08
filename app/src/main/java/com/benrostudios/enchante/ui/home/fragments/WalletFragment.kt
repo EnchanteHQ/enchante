@@ -42,9 +42,7 @@ class WalletFragment : Fragment() {
         }
         getWalletDetails()
         binding.addMoneyCard.setOnClickListener {
-//            transferMoney()
-            makePurchase()
-//            this.findNavController().navigate(R.id.action_walletFragment_to_addFundsFragment)
+            this.findNavController().navigate(R.id.action_walletFragment_to_addFundsFragment)
         }
 
     }

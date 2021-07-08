@@ -55,18 +55,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun callHomeRoute() {
-        apiViewModel.homeRoute(23.20172052330953,72.598053237886)
-        apiViewModel.response.observe(viewLifecycleOwner,  Observer {
-            if(it.data.eventsInRange?.isNotEmpty() == true){
+        apiViewModel.homeRoute(24.46994128423963, 54.60514191693083)
+        apiViewModel.response.observe(viewLifecycleOwner, Observer {
+            if (it.data.eventsInRange?.isNotEmpty() == true) {
                 binding.tipDesc.text = it.data.tip?.description
                 binding.tipTitle.text = it.data.tip?.title
 
-                binding.rvPopularEvents.withSimpleAdapter(it.data.eventsInRange, R.layout.home_event_item){data ->
-                    itemView.findViewById<TextView>(R.id.home_event_item_title).text = data.event.name
-                    itemView.findViewById<TextView>(R.id.home_event_item_status).text = data.event.status
-                    itemView.findViewById<TextView>(R.id.home_event_item_location).text = data.event.location?.humanformAddress ?: "USA"
-                    itemView.findViewById<TextView>(R.id.home_event_item_seats_left).text = "${data.availableSeats}"
-                    Glide.with(itemView).load(data.event.assets?.banner).into(itemView.findViewById(R.id.home_event_item_image))
+                binding.rvPopularEvents.withSimpleAdapter(
+                    it.data.eventsInRange,
+                    R.layout.home_event_item
+                ) { data ->
+                    itemView.findViewById<TextView>(R.id.home_event_item_title).text =
+                        data.event.name
+                    itemView.findViewById<TextView>(R.id.home_event_item_status).text =
+                        data.event.status
+                    itemView.findViewById<TextView>(R.id.home_event_item_location).text =
+                        data.event.location?.humanformAddress ?: "USA"
+                    itemView.findViewById<TextView>(R.id.home_event_item_seats_left).text =
+                        "${data.availableSeats}"
+                    Glide.with(itemView).load(data.event.assets?.banner)
+                        .into(itemView.findViewById(R.id.home_event_item_image))
                 }
             }
         })

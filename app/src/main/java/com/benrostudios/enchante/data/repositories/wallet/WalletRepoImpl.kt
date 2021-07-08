@@ -5,26 +5,28 @@ import android.util.Log.d
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.benrostudios.enchante.R
+import com.benrostudios.enchante.utils.SharedPrefManager
 import com.rapydsdk.callbacks.*
 import com.rapydsdk.entities.*
 import com.rapydsdk.ppackages.*
 import java.util.*
 
 
-class WalletRepoImpl(context: Context) : WalletRepo {
+class WalletRepoImpl(context: Context, sharedPrefManager: SharedPrefManager) : WalletRepo {
     private var rpdInstance: RPDUserManager? = null
     private var globalUser: RPDUser? = null
     private var globalRPDAccountsManager: RPDAccountsManager? = null
     private val _walletBalanceResponse = MutableLiveData<RPDAccount>()
 
     init {
+        d("Wallet Repo", "Init")
         RPDSdk.setDebugMode(true)
         RPDSdk.setup(
             context, context.getString(R.string.RAPYD_ACCESS_KEY),
             context.getString(R.string.RAPYD_SECRET_KEY)
         )
         val rpdUser = RPDUser()
-        rpdUser.phoneNumber = "+611868065687"
+        rpdUser.phoneNumber = sharedPrefManager.userPhoneNumber
         rpdInstance = RPDUserManager()
         rpdInstance?.attachUser(rpdUser, object : UserCallback {
             override fun onResponse(p0: RPDUser?) {
@@ -35,16 +37,23 @@ class WalletRepoImpl(context: Context) : WalletRepo {
             }
 
             override fun onRPDError(p0: RPDError?) {
-                TODO("Not yet implemented")
+                d("WalletRepo", "Wallet Instance ${p0?.reason} ${p0?.description}")
             }
 
         })
     }
 
+
     override fun getWalletBalance() {
+        d("Wallet Repo", "Wallet Balance Called")
         val accountManager = RPDAccountsManager()
         accountManager.getUserAccounts(object : AccountsCallback {
             override fun onResponse(p0: ArrayList<RPDAccount>?) {
+                if (p0.isNullOrEmpty()) {
+                    val dummyRpd = RPDAccount()
+                    dummyRpd.balance = 0.0
+                    _walletBalanceResponse.postValue(dummyRpd)
+                }
                 p0?.forEach {
                     if (it.currency == "USD") {
                         d("WalletRepo", "${it.balance}")
@@ -54,7 +63,7 @@ class WalletRepoImpl(context: Context) : WalletRepo {
             }
 
             override fun onRPDError(p0: RPDError?) {
-                TODO("Not yet implemented")
+                d("WalletRepo", "Wallet Balance ${p0?.reason} ${p0?.description}")
             }
 
         })
@@ -65,30 +74,32 @@ class WalletRepoImpl(context: Context) : WalletRepo {
         transferRequest.currency = RPDCurrency("USD")
         transferRequest.amount = "$amount"
         transferRequest.destination = destination
-        globalRPDAccountsManager?.transferToUser(transferRequest, object : TransferFundsToUserCallback {
-            override fun onResponse(p0: RPDUserTransferDetails?) {
-                val transferReply = RPDTransferReply()
-                transferReply.transferId = p0?.id
-                transferReply.transferStatus = RPDTransferReply.STATUS_ACCEPT
-                RPDAccountsManager().transferReply(
-                    transferReply,
-                    object : TransferFundsToUserCallback {
-                        override fun onResponse(p0: RPDUserTransferDetails?) {
-                            // Return Positive Response
-                            d("WalletRepo", "${p0?.amount}")
-                            getWalletBalance()
-                        }
+        globalRPDAccountsManager?.transferToUser(
+            transferRequest,
+            object : TransferFundsToUserCallback {
+                override fun onResponse(p0: RPDUserTransferDetails?) {
+                    val transferReply = RPDTransferReply()
+                    transferReply.transferId = p0?.id
+                    transferReply.transferStatus = RPDTransferReply.STATUS_ACCEPT
+                    RPDAccountsManager().transferReply(
+                        transferReply,
+                        object : TransferFundsToUserCallback {
+                            override fun onResponse(p0: RPDUserTransferDetails?) {
+                                // Return Positive Response
+                                d("WalletRepo", "${p0?.amount}")
+                                getWalletBalance()
+                            }
 
-                        override fun onRPDError(p0: RPDError?) {
-                            TODO("Not yet implemented")
-                        }
-                    })
-            }
+                            override fun onRPDError(p0: RPDError?) {
+                                d("WalletRepo", "Wallet Balance ${p0?.reason} ${p0?.description}")
+                            }
+                        })
+                }
 
-            override fun onRPDError(p0: RPDError?) {
-                TODO("Not yet implemented")
-            }
-        })
+                override fun onRPDError(p0: RPDError?) {
+                    d("WalletRepo", "Wallet Balance ${p0?.reason} ${p0?.description}")
+                }
+            })
 
     }
 
@@ -102,7 +113,7 @@ class WalletRepoImpl(context: Context) : WalletRepo {
                 }
 
                 override fun onRPDError(error: RPDError) {
-                    // Enter your code here.
+                    d("WalletRepo", "Wallet Balance ${error.reason} ${error.description}")
                 }
             })
     }
