@@ -29,6 +29,18 @@ class SharedPrefManager(val context: Context) {
             getPrefs()?.edit()?.putString(PREFS_USER_PHONE, value)?.apply()
         }
 
+    var arId: String
+        get() = getPrefs()?.getString(PREFS_AR_ID, "") ?: ""
+        set(value) {
+            getPrefs()?.edit()?.putString(PREFS_AR_ID, value)?.apply()
+        }
+
+    var firstOpen: Boolean
+        get() = getPrefs()?.getBoolean(PREFS_FIRST_OPEN, true) ?: true
+        set(value) {
+            getPrefs()?.edit()?.putBoolean(PREFS_FIRST_OPEN, value)?.apply()
+        }
+
     fun nukeSharedPrefs() {
         getPrefs()?.edit()?.clear()?.apply()
     }
@@ -38,6 +50,8 @@ class SharedPrefManager(val context: Context) {
         const val PREFS_USERNAME = "username"
         const val PREFS_PFP_URL = "profileUrl"
         const val PREFS_USER_PHONE = "userPhone"
+        const val PREFS_FIRST_OPEN = "firstOpen"
+        const val PREFS_AR_ID = "arId"
         const val PREFS_JWT = "jwt"
     }
 }

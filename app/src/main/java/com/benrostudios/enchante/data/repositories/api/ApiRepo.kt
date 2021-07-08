@@ -9,4 +9,6 @@ interface ApiRepo {
     val homeResponse: LiveData<GenericResponse>
     suspend fun register(registrationRequest: RegistrationRequest): LiveData<GenericResponse>
     val registrationResponse: LiveData<GenericResponse>
+    suspend fun getMyEvents(): LiveData<GenericResponse>
+    val eventsResponse: LiveData<GenericResponse>
 }

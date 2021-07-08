@@ -11,11 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.benrostudios.enchante.R
 import com.benrostudios.enchante.databinding.FragmentWalletBinding
-import com.benrostudios.enchante.ui.ar.ArPaymentActivity
 import com.benrostudios.enchante.ui.nearby.NearbyPaymentActivity
-import com.benrostudios.enchante.ui.viewmodels.ApiViewModel
 import com.benrostudios.enchante.ui.viewmodels.WalletViewModel
-import okhttp3.internal.format
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 
@@ -65,7 +62,6 @@ class WalletFragment : Fragment() {
     private fun makePurchase() {
         walletViewModel.makePurchase()
     }
-
 
     companion object {
         const val TAG = "wallet_fragment"

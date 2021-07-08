@@ -8,6 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/events_rv"
         tools:listitem="@layout/event_item"
         tools:itemCount="10"
         android:layout_width="0dp"

@@ -25,6 +25,10 @@ interface ApiService {
         @Query("lon") longitude: Double
     ): Response<GenericResponse>
 
+    @GET("v1/user/profile/get-my-events")
+    suspend fun getMyEvents(): Response<GenericResponse>
+
+
     @POST("/v1/user/profile/registration")
     suspend fun register(@Body registrationRequest: RegistrationRequest): Response<GenericResponse>
 

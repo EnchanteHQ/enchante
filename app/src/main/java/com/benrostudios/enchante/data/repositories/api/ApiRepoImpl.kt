@@ -13,6 +13,7 @@ class ApiRepoImpl(private val apiService: ApiService) : BaseNetworkRepository(),
 
     private val _homeResponse = MutableLiveData<GenericResponse>()
     private val _registrationResponse = MutableLiveData<GenericResponse>()
+    private val _eventsResponse = MutableLiveData<GenericResponse>()
 
     override suspend fun getHomeRoute(
         latitude: Double,
@@ -47,4 +48,19 @@ class ApiRepoImpl(private val apiService: ApiService) : BaseNetworkRepository(),
 
     override val registrationResponse: LiveData<GenericResponse>
         get() = _registrationResponse
+
+    override suspend fun getMyEvents(): LiveData<GenericResponse> {
+        return withContext(Dispatchers.IO) {
+            _eventsResponse.postValue(
+                safeApiCall(
+                    call = { apiService.getMyEvents() },
+                    error = "Unable to register"
+                )!!
+            )
+            return@withContext _eventsResponse
+        }
+    }
+
+    override val eventsResponse: LiveData<GenericResponse>
+        get() = _eventsResponse
 }

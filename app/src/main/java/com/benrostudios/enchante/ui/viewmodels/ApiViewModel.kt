@@ -17,6 +17,9 @@ class ApiViewModel(private val apiRepo: ApiRepo) : ViewModel() {
     private val _regResponse = MutableLiveData<GenericResponse>()
     val regResponse: LiveData<GenericResponse> = _regResponse
 
+    private val _eventsResponse = MutableLiveData<GenericResponse>()
+    val eventsResponse: LiveData<GenericResponse> = _eventsResponse
+
     fun homeRoute(latitude: Double, longitude: Double) {
         viewModelScope.launch {
             apiRepo.getHomeRoute(latitude, longitude)
@@ -28,6 +31,13 @@ class ApiViewModel(private val apiRepo: ApiRepo) : ViewModel() {
         viewModelScope.launch {
             apiRepo.register(registrationRequest)
             _regResponse.value = apiRepo.registrationResponse.value
+        }
+    }
+
+    fun getMyEventsRoute() {
+        viewModelScope.launch {
+            apiRepo.getMyEvents()
+            _eventsResponse.value = apiRepo.eventsResponse.value
         }
     }
 }

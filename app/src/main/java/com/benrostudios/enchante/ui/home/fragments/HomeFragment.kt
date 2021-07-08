@@ -1,8 +1,8 @@
 package com.benrostudios.enchante.ui.home.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.benrostudios.enchante.R
 import com.benrostudios.enchante.adapters.withSimpleAdapter
 import com.benrostudios.enchante.databinding.FragmentHomeBinding
+import com.benrostudios.enchante.ui.ar.CloudARActivity
 import com.benrostudios.enchante.ui.home.HomeActivity
 import com.benrostudios.enchante.ui.viewmodels.ApiViewModel
 import com.benrostudios.enchante.ui.viewmodels.AuthViewModel
@@ -42,7 +43,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvPopularEvents.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvPopularEvents.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvInterests.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         inflateUser()
         callHomeRoute()
     }
@@ -65,6 +69,9 @@ class HomeFragment : Fragment() {
                     it.data.eventsInRange,
                     R.layout.home_event_item
                 ) { data ->
+                    itemView.setOnClickListener {
+                        startActivity(Intent(requireContext(), CloudARActivity::class.java))
+                    }
                     itemView.findViewById<TextView>(R.id.home_event_item_title).text =
                         data.event.name
                     itemView.findViewById<TextView>(R.id.home_event_item_status).text =
@@ -74,6 +81,25 @@ class HomeFragment : Fragment() {
                     itemView.findViewById<TextView>(R.id.home_event_item_seats_left).text =
                         "${data.availableSeats}"
                     Glide.with(itemView).load(data.event.assets?.banner)
+                        .into(itemView.findViewById(R.id.home_event_item_image))
+                }
+
+                binding.rvInterests.withSimpleAdapter(
+                    it.data.eventsBasedOnYourInterest!!,
+                    R.layout.home_event_item
+                ) { data ->
+                    itemView.setOnClickListener {
+                        startActivity(Intent(requireContext(), CloudARActivity::class.java))
+                    }
+                    itemView.findViewById<TextView>(R.id.home_event_item_title).text =
+                        data.event?.name
+                    itemView.findViewById<TextView>(R.id.home_event_item_status).text =
+                        data.event?.status
+                    itemView.findViewById<TextView>(R.id.home_event_item_location).text =
+                        data.event?.location?.humanformAddress ?: "USA"
+                    itemView.findViewById<TextView>(R.id.home_event_item_seats_left).text =
+                        "${data.availableSeats}"
+                    Glide.with(itemView).load(data.event?.assets?.banner)
                         .into(itemView.findViewById(R.id.home_event_item_image))
                 }
             }

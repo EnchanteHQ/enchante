@@ -6,14 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.GoogleAuth">
 
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/singup_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/g_sign"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
+
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/signin_pb"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/g_sign"
+        app:layout_constraintEnd_toEndOf="@+id/g_sign"
+        app:layout_constraintStart_toStartOf="@+id/g_sign"
+        app:layout_constraintTop_toTopOf="@+id/g_sign" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

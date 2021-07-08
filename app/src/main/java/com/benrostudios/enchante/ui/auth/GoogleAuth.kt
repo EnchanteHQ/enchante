@@ -1,15 +1,17 @@
 package com.benrostudios.enchante.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.sax.TextElementListener
 import android.util.Log
+import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.lifecycle.Observer
 import com.benrostudios.enchante.R
 import com.benrostudios.enchante.data.models.requests.RegistrationRequest
@@ -21,9 +23,12 @@ import com.benrostudios.enchante.ui.onboarding.OnboardingActivity
 import com.benrostudios.enchante.ui.viewmodels.ApiViewModel
 import com.benrostudios.enchante.ui.viewmodels.AuthViewModel
 import com.benrostudios.enchante.utils.SharedPrefManager
+import com.benrostudios.enchante.utils.hide
+import com.benrostudios.enchante.utils.show
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -48,6 +53,10 @@ class GoogleAuth : Fragment() {
         super.onCreate(savedInstanceState)
         registerAuthIntent()
         configureGso()
+        activity?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
     }
 
     override fun onCreateView(
@@ -58,9 +67,18 @@ class GoogleAuth : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.gSign.setSize(SignInButton.SIZE_STANDARD)
+        binding.gSign.children.forEach {
+            if(it is TextView){
+                it.text = "Continue with Google"
+            }
+        }
         binding.gSign.setOnClickListener {
+            binding.signinPb.show()
+            binding.gSign.hide()
             signIn()
         }
     }
@@ -105,7 +123,8 @@ class GoogleAuth : Fragment() {
                     tokenObtain()
                 } else {
                     Log.w(AuthActivity.TAG, "signInWithCredential:failure", task.exception)
-                    //TODO: Handle login failure
+                    binding.signinPb.hide()
+                    binding.gSign.show()
                 }
             }
     }

@@ -50,11 +50,13 @@ class WalletRepoImpl(context: Context, sharedPrefManager: SharedPrefManager) : W
         accountManager.getUserAccounts(object : AccountsCallback {
             override fun onResponse(p0: ArrayList<RPDAccount>?) {
                 if (p0.isNullOrEmpty()) {
+                    d("WalletRepo", "nil balance")
                     val dummyRpd = RPDAccount()
                     dummyRpd.balance = 0.0
                     _walletBalanceResponse.postValue(dummyRpd)
                 }
                 p0?.forEach {
+                    d("WalletRepo", "${it.balance}")
                     if (it.currency == "USD") {
                         d("WalletRepo", "${it.balance}")
                         _walletBalanceResponse.postValue(it)

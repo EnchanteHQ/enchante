@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.benrostudios.enchante.R
 import com.benrostudios.enchante.ui.viewmodels.NearbyViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class NearbyTransactionProgressFragment : Fragment() {
 
-    private val nearbyViewModel: NearbyViewModel by inject()
-
+    private val nearbyViewModel: NearbyViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

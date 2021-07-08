@@ -8,15 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.benrostudios.enchante.R
 import com.benrostudios.enchante.databinding.FragmentOnboardingBinding
+import com.benrostudios.enchante.ui.auth.AuthActivity
 import com.benrostudios.enchante.ui.home.HomeActivity
+import com.benrostudios.enchante.utils.SharedPrefManager
 import com.benrostudios.enchante.utils.show
 import com.bumptech.glide.Glide
+import org.koin.android.ext.android.inject
 
 
 class OnboardingFragment : Fragment() {
 
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
+    private val sharedPrefManager: SharedPrefManager by inject()
 
     lateinit var image: String
     lateinit var heading: String
@@ -65,7 +69,8 @@ class OnboardingFragment : Fragment() {
 
         if (final) {
             binding.onboardingNext.setOnClickListener {
-                startActivity(Intent(context, HomeActivity::class.java))
+                sharedPrefManager.firstOpen = false
+                startActivity(Intent(context, AuthActivity::class.java))
                 activity?.finish()
             }
             binding.onboardingNext.show()

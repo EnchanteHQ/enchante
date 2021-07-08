@@ -12,12 +12,13 @@ import com.benrostudios.enchante.databinding.FragmentNearbyTransactionDetailsBin
 import com.benrostudios.enchante.databinding.FragmentWalletBinding
 import com.benrostudios.enchante.ui.viewmodels.NearbyViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class NearbyTransactionDetailsFragment : Fragment() {
     private var _binding: FragmentNearbyTransactionDetailsBinding? = null
     private val binding get() = _binding!!
-    val nearbyViewModel: NearbyViewModel by inject()
+    private val nearbyViewModel: NearbyViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

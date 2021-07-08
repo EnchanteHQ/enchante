@@ -13,6 +13,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         app:cardBackgroundColor="@color/grey_dark"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,25 +24,25 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:background="@drawable/rounded_corners"
                 android:id="@+id/event_item_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="133dp"
+                android:layout_height="133dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_corners"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:textAllCaps="true"
                 android:id="@+id/event_item_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="@string/placeholder_event_date"
+                android:textAllCaps="true"
                 android:textColor="@color/primary_orange"
                 android:textSize="10sp"
                 app:layout_constraintStart_toEndOf="@+id/event_item_image"
@@ -90,7 +91,6 @@
                 app:srcCompat="@drawable/ic_location_24" />
 
             <TextView
-                android:textScaleX="1.2"
                 android:id="@+id/event_item_pass_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,6 +98,7 @@
                 android:text="@string/placeholder_event_pass_type"
                 android:textAllCaps="true"
                 android:textColor="@color/primary_green"
+                android:textScaleX="1.2"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="@+id/event_item_share"
                 app:layout_constraintStart_toStartOf="@+id/imageView8"
