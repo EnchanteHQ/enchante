@@ -21,10 +21,10 @@ class OnboardingActivity : AppCompatActivity() {
         fragments.add(MyEvents())
         fragments.add(MyEvents())
         val viewPagerAdapter = ViewPagerAdapterOb(supportFragmentManager)
-        viewPagerAdapter.addFragment(newInstance("1", "Maps", "We change the way you see events", "aasdf", false))
-        viewPagerAdapter.addFragment(newInstance("2", "Payment and  Budget", "AR payments brought to life", "aasdf", false))
-        viewPagerAdapter.addFragment(newInstance("3", "Connect", "Connect with like minded people in events.", "aasdf", false))
-        viewPagerAdapter.addFragment(newInstance("4", "Currency", "Booking made easy!!!", "aasdf", true))
+        viewPagerAdapter.addFragment(newInstance("1", "Maps", "We change the way you see events", "Stepping outside for an event? Enchante is all you need", false))
+        viewPagerAdapter.addFragment(newInstance("2", "Payment and  Budget", "AR payments brought to life", "Pull your phone, point at the shop, pay and go!", false))
+        viewPagerAdapter.addFragment(newInstance("3", "Connect", "Connect with like minded people in events.", "Connect and increase your network by connecting to people in events", false))
+        viewPagerAdapter.addFragment(newInstance("4", "Currency", "Booking made easy!!!", "Currency made easy! Use our state of art payment system powered by Rapyd to pay anywhere anytime!", true))
         binding.onboardingViewPager.adapter = viewPagerAdapter
         binding.tabLayoutIndicator.setupWithViewPager(binding.onboardingViewPager)
 

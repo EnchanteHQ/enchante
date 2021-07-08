@@ -32,4 +32,5 @@
     <string name="proceed_to_payment">Proceed to payment</string>
     <string name="enter_amount_text">Enter Amount</string>
     <string name="back_to_wallet">Back to Wallet</string>
+    <string name="pay_to">Payment to Tony</string>
 </resources>

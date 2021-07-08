@@ -72,7 +72,7 @@ class GoogleAuth : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.gSign.setSize(SignInButton.SIZE_STANDARD)
         binding.gSign.children.forEach {
-            if(it is TextView){
+            if (it is TextView) {
                 it.text = "Continue with Google"
             }
         }
@@ -164,7 +164,7 @@ class GoogleAuth : Fragment() {
         val regRequest = RegistrationRequest(
             "",
             Firebase.auth.currentUser?.photoUrl.toString(),
-            listOf("Hardworking"),
+            listOf("Motorsports"),
             sharedPrefManager.userPhoneNumber,
             ""
         )

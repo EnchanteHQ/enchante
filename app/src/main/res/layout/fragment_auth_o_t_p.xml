@@ -51,6 +51,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/number_input_field"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="13"

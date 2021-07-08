@@ -6,15 +6,6 @@
     app:startDestination="@id/nearbyTransactionDetailsFragment">
 
     <fragment
-        android:id="@+id/nearbyDiscoveryFragment"
-        android:name="com.benrostudios.enchante.ui.nearby.fragments.NearbyDiscoveryFragment"
-        android:label="fragment_nearby_discovery"
-        tools:layout="@layout/fragment_nearby_discovery" >
-        <action
-            android:id="@+id/action_nearbyDiscoveryFragment_to_nearbyTransactionDetailsFragment"
-            app:destination="@id/nearbyTransactionDetailsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/nearbyTransactionDetailsFragment"
         android:name="com.benrostudios.enchante.ui.nearby.fragments.NearbyTransactionDetailsFragment"
         android:label="fragment_nearby_transaction_details"

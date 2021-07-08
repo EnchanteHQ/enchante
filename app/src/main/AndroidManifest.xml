@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Enchante">
-        <activity android:name=".ui.ar.CloudARActivity"></activity>
+        <activity android:name=".ui.nearby.NearbyFragmentHolder" />
+        <activity android:name=".ui.ar.CloudARActivity" />
         <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.nearby.NearbyPaymentActivity" />
         <activity android:name=".ui.TestActivity" />
@@ -28,7 +29,6 @@
         <activity
             android:name=".SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_splash"
             android:theme="@style/Theme.Enchante.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,11 +45,9 @@
         <meta-data
             android:name="com.google.android.nearby.messages.API_KEY"
             android:value="@string/NEARBY_KEY" />
-
         <meta-data
             android:name="com.google.android.ar.API_KEY"
             android:value="@string/NEARBY_KEY" />
-
 
         <uses-library
             android:name="org.apache.http.legacy"

@@ -11,6 +11,7 @@ import com.benrostudios.enchante.R
 import com.benrostudios.enchante.databinding.FragmentNearbyTransactionDetailsBinding
 import com.benrostudios.enchante.databinding.FragmentWalletBinding
 import com.benrostudios.enchante.ui.viewmodels.NearbyViewModel
+import com.benrostudios.enchante.ui.viewmodels.WalletViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,6 +20,7 @@ class NearbyTransactionDetailsFragment : Fragment() {
     private var _binding: FragmentNearbyTransactionDetailsBinding? = null
     private val binding get() = _binding!!
     private val nearbyViewModel: NearbyViewModel by viewModel()
+    private val walletViewModel: WalletViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +32,16 @@ class NearbyTransactionDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.nearbyDetailsProceedToPaymentBtn.setOnClickListener {
-            nearbyViewModel.setAmount(binding.nearbyDetailsMoneyText.text.toString().toDouble())
-            d("trial", "chekc ${binding.nearbyDetailsMoneyText.text.toString().toDouble()}")
+            moveFunds()
             this.findNavController()
                 .navigate(R.id.action_nearbyTransactionDetailsFragment_to_nearbyTransactionProgressFragment)
         }
+    }
+
+    private fun moveFunds() {
+        walletViewModel.makeTransaction(
+            "+919999999999",
+            binding.nearbyDetailsMoneyText.toString().toDouble()
+        )
     }
 }

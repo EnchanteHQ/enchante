@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/neue_montreal_bold"
-                    android:text="42 USD"
+                    android:text="Loading..."
                     android:textSize="32sp"
                     app:layout_constraintStart_toStartOf="@+id/textView"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -171,7 +171,8 @@
                     android:src="@drawable/ic_baseline_call_made_24"
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     app:layout_constraintStart_toEndOf="@+id/textView2"
-                    app:layout_constraintTop_toTopOf="@+id/textView2" />
+                    app:layout_constraintTop_toTopOf="@+id/textView2"
+                    app:tint="@color/black" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

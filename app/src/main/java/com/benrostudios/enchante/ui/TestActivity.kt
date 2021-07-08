@@ -1,16 +1,18 @@
 package com.benrostudios.enchante.ui
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.benrostudios.enchante.R
+import com.benrostudios.enchante.utils.SharedPrefManager
 import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.messages.*
+import org.koin.android.ext.android.inject
 
 
 class TestActivity : AppCompatActivity() {
+
+    private val sharedPrefManager: SharedPrefManager by inject()
 
     //Nearby
     private lateinit var messageListener: MessageListener
@@ -47,52 +49,17 @@ class TestActivity : AppCompatActivity() {
             .setStrategy(Strategy.BLE_ONLY)
             .build()
 
-        val poptions = PublishOptions.Builder().setStrategy(Strategy.DEFAULT).build()
+        val pOptions = PublishOptions.Builder().setStrategy(Strategy.DEFAULT).build()
         Nearby.getMessagesClient(
             this, MessagesOptions.Builder()
                 .setPermissions(NearbyPermissions.BLE)
                 .build()
-        ).publish(Message("Suppppp".toByteArray()), poptions).addOnFailureListener {
-            Log.d(TAG, it.toString())
-        };
+        ).publish(Message(sharedPrefManager.userPhoneNumber.toByteArray()), pOptions)
+            .addOnFailureListener {
+                Log.d(TAG, it.toString())
+            };
         Nearby.getMessagesClient(this).subscribe(messageListener, options);
 
-        Nearby.getMessagesClient(
-            this, MessagesOptions.Builder()
-                .setPermissions(NearbyPermissions.BLE)
-                .build()
-        ).publish(Message("lmfao".toByteArray())).addOnFailureListener {
-            Log.d(TAG, it.toString())
-        };
-//        Nearby.getMessagesClient(this).publish(Message("Suppppp".toByteArray()))
-//        Nearby.getMessagesClient(this).subscribe(messageListener)
-
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-
-                Nearby.getMessagesClient(
-                    this, MessagesOptions.Builder()
-                        .setPermissions(NearbyPermissions.BLE)
-                        .build()
-                ).publish(Message("lmfa2o".toByteArray())).addOnFailureListener {
-                    Log.d(TAG, it.toString())
-                };
-
-
-            }, 5000
-        )
-    }
-
-    override fun onStart() {
-//        Nearby.getMessagesClient(this).publish(Message("Suppppp".toByteArray()))
-//        Nearby.getMessagesClient(this).subscribe(messageListener)
-//        try {
-//            messageClient.publish(Message("Suppppp".toByteArray()));
-//            messageClient.subscribe(messageListener);
-//        } catch(e: Exception){
-//            Log.d(TAG, e.toString())
-//        }
-        super.onStart()
     }
 
     override fun onStop() {
