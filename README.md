@@ -1,10 +1,10 @@
 ![Enchante Banner](assets/banner.png)
 
-# Enchante App
+# Enchanté App
 
 > Reinventing transaction system using Augmented Reality and nearby Proximity
 
-## What is Enchante?
+## What is Enchanté?
 
 We at Enchanté are reinventing the traditional transaction system and taking contactless payment to a whole new level by adopting bleeding-edge technology such as Augmented reality and nearby payments within eyesight.
 
@@ -45,7 +45,7 @@ git clone https://github.com/EnchanteHQ/enchante
 </resources>
 ```
 
-- Create your own Enchante API Hosting using [enchante-api](https://github.com/EnchanteHQ/core-api) API and get your API KEY, and place it inside quotes like shown below
+- Create your own Enchanté API Hosting using [enchante-api](https://github.com/EnchanteHQ/core-api) API and get your API KEY, and place it inside quotes like shown below
 
 ```kotlin
 package com.benrostudios.enchante.utils
@@ -61,7 +61,7 @@ object Constants {
 
 ## Architecture and Structure
 
-Enchante App uses MVVM Architecture as recommended by Google and takes full advantages of Jetpack Components such as LiveData, viewModelScopes and Coroutines. It additionally uses Koin for dependency Injection.
+Enchanté App uses MVVM Architecture as recommended by Google and takes full advantages of Jetpack Components such as LiveData, viewModelScopes and Coroutines. It additionally uses Koin for dependency Injection.
 
 Do note that ARCore, NearbyAPI, and Rapyd SDK has been decoupled from the main repository app to allow scope of Unit and E2E testing in future
 
@@ -77,7 +77,7 @@ Spread the word to your fellows to help grow a healthy environment for us!
 
 - Feel Free to Open a PR/Issue for any feature or bug(s).
 - Make sure you follow the community guidelines!
-- Feel free to open an issue to ask a question/discuss anything about Enchante App.
+- Feel free to open an issue to ask a question/discuss anything about Enchanté App.
 - Have a feature request? Open an Issue!
 
 
