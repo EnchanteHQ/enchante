@@ -41,7 +41,7 @@ class NearbyTransactionDetailsFragment : Fragment() {
     private fun moveFunds() {
         walletViewModel.makeTransaction(
             "+919999999999",
-            binding.nearbyDetailsMoneyText.toString().toDouble()
+            binding.nearbyDetailsMoneyText.text.toString().toDouble()
         )
     }
 }
