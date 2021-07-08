@@ -80,6 +80,14 @@ Spread the word to your fellows to help grow a healthy environment for us!
 - Feel free to open an issue to ask a question/discuss anything about Enchante App.
 - Have a feature request? Open an Issue!
 
+
+## Important Links
+
+- [Landing Page](https://enchante.cf/)
+- [Github Repositories](https://links.enchante.cf/github)
+- [Postman API Documentation](https://documenter.getpostman.com/view/11033610/Tzm5JxSi#2b2e1dd6-1f04-4876-86fa-eb554e865128)
+- [Figma Designs](https://links.enchante.cf/figma)
+
 ## License
 
 Copyright 2021 EnchanteHQ
@@ -87,3 +95,5 @@ Copyright 2021 EnchanteHQ
 Licensed under MIT License : https://opensource.org/licenses/MIT
 
 Use of [RapydSDK](https://docs.rapyd.net/works-with/reference/rapyd-mobile-sdk-reference) is propritery, and is designed for developers. This project does not distribute the SDK in anyway Use at your own risk with appropriate license and certification. 
+
+<p align="center">Made with ❤ by Team Alpha</p>
