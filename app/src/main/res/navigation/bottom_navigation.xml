@@ -14,7 +14,11 @@
         android:id="@+id/walletFragment"
         android:name="com.benrostudios.enchante.ui.home.fragments.WalletFragment"
         android:label="fragment_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_wallet" >
+        <action
+            android:id="@+id/action_walletFragment_to_addFundsFragment"
+            app:destination="@id/addFundsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.benrostudios.enchante.ui.home.fragments.EventsFragment"
@@ -25,4 +29,9 @@
         android:name="com.benrostudios.enchante.ui.home.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addFundsFragment"
+        android:name="com.benrostudios.enchante.ui.home.fragments.wallet.AddFundsFragment"
+        android:label="fragment_add_funds"
+        tools:layout="@layout/fragment_add_funds" />
 </navigation>

@@ -21,7 +21,10 @@
         tools:layout="@layout/fragment_nearby_transaction_details" >
         <action
             android:id="@+id/action_nearbyTransactionDetailsFragment_to_nearbyTransactionProgressFragment"
-            app:destination="@id/nearbyTransactionProgressFragment" />
+            app:destination="@id/nearbyTransactionProgressFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nearbyTransactionProgressFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/nearbyTransactionResultFragment"

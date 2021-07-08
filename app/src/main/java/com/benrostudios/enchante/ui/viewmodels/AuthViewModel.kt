@@ -8,12 +8,12 @@ import com.benrostudios.enchante.data.network.reponse.GenericResponse
 import com.benrostudios.enchante.data.repositories.auth.AuthRepo
 import kotlinx.coroutines.launch
 
-class AuthViewModel(private val authRepo: AuthRepo): ViewModel() {
+class AuthViewModel(private val authRepo: AuthRepo) : ViewModel() {
 
     private val _response = MutableLiveData<GenericResponse>()
     val response: LiveData<GenericResponse> = _response
 
-     fun login(token: String) {
+    fun login(token: String) {
         viewModelScope.launch {
             authRepo.login(token)
             _response.value = authRepo.authResponse.value

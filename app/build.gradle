@@ -111,6 +111,9 @@ dependencies {
     //RapydSDK
     implementation files('libs/rapyd_sdk-release.aar')
 
+    //Volley
+    implementation 'com.android.volley:volley:1.2.0'
+
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.4.4'
